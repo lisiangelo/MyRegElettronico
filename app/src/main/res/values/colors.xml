@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#263246</color>
+  <!--  <color name="colorPrimaryDark">#6a0080</color>
+    <color name="colorAccent">#7bb241</color>-->
+ <!--   <color name="colorPrimary">#1a2346</color>
+    <color name="colorPrimaryDark">#263250</color>
+    <color name="colorAccent">#0051B5</color>-->
+   <!-- <color name="colorPrimary">@android:color/black</color>-->
+    <color name="colorPrimaryDark">@android:color/black</color>
+    <color name="colorAccent">#eceff1</color>
+    <!--<color name="colorAccent">#ffd700</color>-->
+
+    <color name="windowBackground">#1a2346</color>
+    <color name="cardBackground">#263250</color>
+
+    <color name="red">#c1272d</color>
+    <color name="greenfluo">#00ff00</color>
+    <color name="greendark">#006600</color>
+    <color name="bluet">#0033FF</color>
+    <color name="orange">#f7931e</color>
+    <color name="orange_alfa">#99f7931e</color>
+    <color name="black">#000000</color>
+    <color name="white">#fffff1</color>
+    <color name="ocra">#d9e021</color>
+    <color name="ocra_alfa">#99d9e021</color>
+    <color name="lightgrey">#e6e6e6</color>
+    <color name="grey">#cccccc</color>
+    <color name="darkgrey">#4d4d4d</color>
+
+</resources>

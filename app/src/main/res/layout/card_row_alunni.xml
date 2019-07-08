@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="@dimen/appbar_padding_top"
+        app:contentPadding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:id="@+id/img_alunno"
+                android:layout_width="109dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+
+                android:src="@drawable/ic_studente" />
+
+            <LinearLayout
+                android:id="@+id/card_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="21dp"
+                android:layout_toRightOf="@+id/img_alunno"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/id_alunno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/margin_card_row"/>
+
+                <TextView
+                    android:id="@+id/cf_istituto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/margin_card_row"/>
+                <TextView
+                    android:id="@+id/userid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/margin_card_row"/>
+                <TextView
+                    android:id="@+id/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/margin_card_row"/>
+
+                <TextView
+                    android:id="@+id/tipo_istituto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/margin_card_row"/>
+
+                <TextView
+                    android:id="@+id/nome_istituto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/margin_card_row"/>
+                <TextView
+                    android:id="@+id/nome_alunno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/margin_card_row"/>
+                <TextView
+                    android:id="@+id/classe_se_alunno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_card_row"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_option"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@android:drawable/ic_menu_more" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_item_sommario"
+            android:icon="@drawable/icons8_sommario_24"
+            android:title="Dati di Sintesi" />
+
+        <item
+            android:id="@+id/menu_item_voti"
+            android:icon="@drawable/voti_"
+            android:title="Voti e Medie" />
+
+
+        <item
+            android:id="@+id/menu_item_compiti"
+            android:icon="@drawable/icons8_libri_24"
+            android:title="Argomenti e Compiti" />
+
+        <item
+            android:id="@+id/menu_item_assenza"
+            android:icon="@drawable/icons8_chiamare_a_letto_24"
+            android:title="Assenze" />
+        <item
+            android:id="@+id/menu_item_orario_lezioni"
+            android:icon="@drawable/icons8_agenda_24"
+            android:title="Orario Lezioni" />
+    </group>
+
+
+
+
+</menu>

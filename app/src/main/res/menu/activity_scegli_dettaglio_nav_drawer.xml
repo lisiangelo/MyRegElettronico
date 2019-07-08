@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/menu1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_item_cambia_alunno"
+            android:icon="@drawable/icons8_cambia_utenti24"
+            android:title="Cambia Alunno" />
+
+        <item
+            android:id="@+id/checkOnService"
+            android:icon="@drawable/ic_notifications_active_black_24dp"
+            android:title="Attiva notifiche"
+            app:actionLayout="@layout/layout_switch" />
+    </group>
+    <group android:id="@+id/menu2">
+    <item
+        android:id="@+id/nav_esci"
+        android:icon="@drawable/icons8_spegni_24"
+        android:title="esci" />
+    </group>
+
+</menu>

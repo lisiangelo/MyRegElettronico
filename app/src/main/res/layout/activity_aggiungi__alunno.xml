@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:id="@+id/layoutcostrain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Aggiungi_Alunno"
+        tools:layout_editor_absoluteY="96dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/click_cerca_scuola"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/cf_istituto"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:editable="false"
+                    android:hint="@string/istituto_scolastico" />
+
+                <TextView
+                    android:id="@+id/tipo_istituto"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:editable="false"
+                    android:hint="@string/inserisci_il_tipo_di_istituto" />
+
+                <TextView
+                    android:id="@+id/nome_istituto"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:editable="false"
+                    android:hint="@string/inserisci_il_nome_dell_istituto" />
+
+                <TextView
+                    android:id="@+id/indirizzo"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:editable="false"
+                    android:hint="@string/inserisci_indirizzo_dell_istituto" />
+            </LinearLayout>
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@android:drawable/ic_search_category_default" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/nome_alunno"
+                    android:layout_width="252dp"
+                    android:layout_height="@dimen/textview_height"
+                    android:layout_marginTop="12dp"
+                    android:hint="nome alunno"
+                    android:imeOptions="actionSend"
+                    android:singleLine="true" />
+
+
+                <LinearLayout
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/classe_"
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/textview_height"
+                        android:layout_marginTop="12dp"
+                        android:hint="Classe"
+                        android:imeOptions="actionSend"
+                        android:inputType="number"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/sez_"
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/textview_height"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:imeOptions="actionSend"
+                        android:hint="Sezione"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/userid"
+                    android:layout_width="252dp"
+                    android:layout_height="@dimen/textview_height"
+                    android:layout_marginTop="12dp"
+                    android:imeOptions="actionSend"
+                    android:hint="user id per questo istituto" />
+
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="252dp"
+                    android:layout_height="@dimen/textview_height"
+                    android:layout_marginTop="12dp"
+                    android:imeOptions="actionSend"
+                    android:hint="inserisci la password"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_inserisci"
+            android:layout_width="179dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Inserisci" />
+
+    </LinearLayout>
+</ScrollView><!--</android.support.v4.widget.NestedScrollView>-->

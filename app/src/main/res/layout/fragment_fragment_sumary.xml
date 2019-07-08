@@ -1,0 +1,294 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="it.android.j940549.myreg_elettronico.navigationDrawer.FragmentSumary">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="@dimen/appbar_padding_top"
+                app:contentPadding="10dp"
+                card_view:cardBackgroundColor="@android:color/transparent">
+                <!--            card_view:cardBackgroundColor="@color/colorPrimary">-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        android:text=" MEDIA DEI VOTI "
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/mediatotale_summary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="3dp"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/crediti"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mediatotale_summary"
+                            android:layout_alignParentLeft="true"
+                            android:layout_margin="3dp"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pie_voto_media"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="0dp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_voti_per_materia"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_card_row"
+                app:cardElevation="8dp"
+                card_view:cardBackgroundColor="@android:color/transparent"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="@dimen/margin_card_row">
+                <!--            card_view:cardBackgroundColor="@color/colorPrimary">-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        android:text="ULTIMO VOTO A SISTEMA"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/data_voto_sommario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/materia_voto_sommario"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/data_voto_sommario"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/voto_sommario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <!--                        <com.github.mikephil.charting.charts.PieChart
+                                                    android:id="@+id/pie_ultimo_voto"
+                                                    android:layout_width="100dp"
+                                                    android:layout_height="100dp"
+                                                    android:layout_alignParentRight="true"
+                                                    android:padding="0dp" />-->
+
+                        <TextView
+                            android:id="@+id/tipo_voto_sommario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/voto_sommario"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_assenza"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardElevation="8dp"
+                card_view:cardBackgroundColor="@android:color/transparent"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="@dimen/margin_card_row">
+                <!--            card_view:cardBackgroundColor="@color/colorPrimary">-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        android:text="ULTIMA ASSENZE A SISTEMA"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/titolo_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="DATA / TIPO" />
+
+                        <TextView
+                            android:id="@+id/titolo_giust"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="GIUSTIFICA" />
+
+                        <TextView
+                            android:id="@+id/data_assenza_sommario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/titolo_data"
+                            android:layout_margin="@dimen/margin_card_row"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tipo_assenza_sommario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/data_assenza_sommario"
+                            android:layout_margin="@dimen/margin_card_row" />
+
+                        <TextView
+                            android:id="@+id/giustificazione_sommario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20dp" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_view_comunicazione"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardElevation="8dp"
+                card_view:cardBackgroundColor="@android:color/transparent"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="@dimen/margin_card_row">
+                <!--            card_view:cardBackgroundColor="@color/colorPrimary">-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_weight="82"
+                            android:text="ULTIMA COMUNICAZIONE A SISTEMA"
+                            android:textAlignment="center"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btn_mostra_comun"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="5dp"
+                            android:layout_weight="8"
+                            android:background="@drawable/elenco" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/data_ultima_comunicazione"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_card_row"
+
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/testo_ultima_comunicazione"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_card_row" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>

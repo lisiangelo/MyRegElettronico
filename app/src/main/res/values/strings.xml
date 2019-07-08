@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">MyRegistro_Elettronico</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="alunnoChris">Christian Lisi</string>
+    <string name="alunnoManu">Manuel Lisi</string>
+    <string name="alunnoMela">Melanie Lisi</string>
+    <string name="itis">I.T.I.S. Trafelli</string>
+    <string name="lic_ling">Lic. Ling. Innocenzo XII</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_mostra__voti__alunno1">Mostra_Voti_Alunno1</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_mostra_voti_alunno">MostraVotiAlunno</string>
+    <string name="title_activity_scegli_dettaglio_nav">ScegliDettaglioNav</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_home_">My Registro Eletronico</string>
+    <string name="istituto_scolastico">Cod. Fis. Istituto</string>
+    <string name="istruzioni_per_ricerca">Istruzioni per la selezione: \n Digitare almeno 4 caratteri del NOME o dell\'INDIRIZZO della scuola (non importa se maiuscoli o minuscoli) oppure almeno 5 caratteri del CODICE FISCALE \nAd esempio: ISTITUTO \'Leonardo Da Vinci\', digitare \'LEON\' oppure \'Nardo\' oppure \'vinci\' ma non \'Istituto,\' Cliccare sul pulsante Seleziona Scegliere la propria scuola tra quelle che appariranno e cliccare sull\'Area di interesse</string>
+    <string name="inserisci_il_tipo_di_istituto">Tipo di istituto</string>
+    <string name="inserisci_il_nome_dell_istituto">Nome dell\'istituto</string>
+    <string name="inserisci_indirizzo_dell_istituto">Indirizzo dell\'istituto</string>
+    <string name="title_activity_crea__mod_orario">Crea_ModOrario</string>
+    <string name="title_activity_crea__mod__orario_">Crea_Mod_Orario_</string>
+    <string name="title_activity_crea_elenco_materie_">CreaElencoMaterie_</string>
+    <string name="title_activity_mostra__comunicazioni">Mostra_Comunicazioni</string>
+    <string name="title_activity_voti_per__materia_">Voti della Materia</string>
+
+</resources>
