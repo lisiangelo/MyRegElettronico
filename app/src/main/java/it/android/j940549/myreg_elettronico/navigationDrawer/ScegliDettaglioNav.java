@@ -375,7 +375,7 @@ public class ScegliDettaglioNav extends AppCompatActivity {
         GregorianCalendar ddate = new GregorianCalendar();
         int mese = ddate.get(GregorianCalendar.MONTH) + 1;
         int anno = ddate.get((GregorianCalendar.YEAR));
-        if (mese > 9) {
+        if (mese > 8) {
             annosc1= ""+(anno-1)+"/"+anno;
             annosc2= ""+anno+"/"+(anno+1);
         } else {

@@ -69,7 +69,7 @@ public class Home_Activity extends AppCompatActivity {
         } else {
             annoscolastico = "2018/2019";
         }*/
-        if (mese > 9) {
+        if (mese > 8) {
             annoscolastico = ""+anno+"/"+(anno+1);
         } else {
             annoscolastico = ""+(anno-1)+"/"+anno;
