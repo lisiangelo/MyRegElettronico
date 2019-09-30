@@ -151,5 +151,4 @@ public class Fragment_Mostra_Assenze extends Fragment {
 
 
     }
-    }
-
+}

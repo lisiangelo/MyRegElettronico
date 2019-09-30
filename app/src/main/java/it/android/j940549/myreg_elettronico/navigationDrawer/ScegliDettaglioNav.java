@@ -51,6 +51,7 @@ import it.android.j940549.myreg_elettronico.Home_Activity;
 import it.android.j940549.myreg_elettronico.HttpUrlConnection.RegHttpConnection_adatto;
 import it.android.j940549.myreg_elettronico.R;
 import it.android.j940549.myreg_elettronico.SQLite.DBLayer;
+import it.android.j940549.myreg_elettronico.app_widget.MyStackWidgetProvider;
 import it.android.j940549.myreg_elettronico.argomenti.Mostra_Compiti_Argoemnti_Frag;
 import it.android.j940549.myreg_elettronico.assenze.Fragment_Mostra_Assenze;
 import it.android.j940549.myreg_elettronico.model.Alunno;
@@ -102,7 +103,9 @@ public class ScegliDettaglioNav extends AppCompatActivity {
             annosc = savedInstanceState.getString("annosc");
             quadr = savedInstanceState.getString("quadrimestre");
             pagina = savedInstanceState.getInt("pagina");
+
         } else {
+
             alunno = (Alunno) getIntent().getSerializableExtra("alunno");
             annosc = getIntent().getStringExtra("annosc");
             quadr = getIntent().getStringExtra("quadrimestre");
@@ -430,7 +433,7 @@ public class ScegliDettaglioNav extends AppCompatActivity {
         PendingIntent pendingalarmIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Set the alarm to start and repet evert 1 hours
-        long repeatInterval = 1 * (60 *60* 1000);
+        long repeatInterval = 1 * (60*60* 1000);
 
         long triggerTime = SystemClock.elapsedRealtime();
 
@@ -448,10 +451,11 @@ public class ScegliDettaglioNav extends AppCompatActivity {
     private void disattivaNotifiche() {
 
         Intent intent = new Intent(ScegliDettaglioNav.this, AlarmManager.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID, intent, 0);
 
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(alarmIntent);
+
 
     }
 
@@ -752,6 +756,11 @@ public class ScegliDettaglioNav extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
 //            progressDialog.dismiss();
+            Intent intentUpdateWidget= new Intent();
+            intentUpdateWidget.setAction(MyStackWidgetProvider.ACTION_AUTO_UPDATE);
+            myActivity.sendBroadcast(intentUpdateWidget);
+            Log.i(TAG_LOG,"intentUpdatewidget");
+
         }
     }
 

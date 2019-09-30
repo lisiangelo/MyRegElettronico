@@ -10,15 +10,28 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+
+import java.security.Timestamp;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import it.android.j940549.myreg_elettronico.R;
 import it.android.j940549.myreg_elettronico.SQLite.DBLayer;
 import it.android.j940549.myreg_elettronico.model.Alunno;
 import it.android.j940549.myreg_elettronico.model.ConvertiData;
+import it.android.j940549.myreg_elettronico.model.Credito;
 
 public class MyStackWidgetService extends RemoteViewsService {
     @Override
@@ -34,11 +47,23 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     private Context mContext;
     private int mAppWidgetId;
     private String annosc, quadrimestre;
-
+    private Double valoremediatotale;
+    private PieChart pieChat_media_totale;
     public StackRemoteViewsFactory(Context context, Intent intent) {
         mContext = context;
         mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID);
+        //mWidgetItems.clear();
+
+/*        for (int i = 0; i < alunni.size() ; i++) {
+            WidgetItem widgetItem = new WidgetItem();
+            widgetItem.setNomealunno(alunni.get(i).getNome_alunno());
+//            caricaMedia(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
+            caricaUltimoVoto(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
+            caricaUtimaAssenza(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
+            mWidgetItems.add(widgetItem);
+        }
+*/
     }
 
     public void onCreate() {
@@ -49,21 +74,7 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
         caricaDatiAlunni();
         Log.i(TAG_LOG,"alunni.size()->"+alunni.size());
-        for (int i = 0; i < alunni.size() ; i++) {
-            WidgetItem widgetItem = new WidgetItem();
-            widgetItem.setNomealunno(alunni.get(i).getNome_alunno());
-            caricaUltimoVoto(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
-            caricaUtimaAssenza(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
-            mWidgetItems.add(widgetItem);
-        }
-        // We sleep for 3 seconds here to show how the empty view appears in the interim.
-        // The empty view is set in the StackWidgetProvider and should be a sibling of the
-        // collection view.
-        /*try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
+        mWidgetItems.clear();
     }
 
     public void onDestroy() {
@@ -82,6 +93,8 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         // text based on the position.
         RemoteViews rviews = new RemoteViews(mContext.getPackageName(), R.layout.my_widget_item);
         rviews.setTextViewText(R.id.alunno_widget,mWidgetItems.get(position).getNomealunno());
+        //rviews.setTextViewText(R.id.alunno_widget,""+System.currentTimeMillis());
+
         rviews.setTextViewText(R.id.voto_widget, mWidgetItems.get(position).getVoto());
         rviews.setTextViewText(R.id.data_voto_widget, mWidgetItems.get(position).getDatavoto());
         rviews.setTextViewText(R.id.materia_widget, mWidgetItems.get(position).getMateria());
@@ -175,7 +188,60 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         // from the network, etc., it is ok to do it here, synchronously. The widget will remain
         // in its current state while work is being done here, so you don't need to worry about
         // locking up the widget.
+        mWidgetItems.clear();
+        Log.i(TAG_LOG, "update su change");
+        for (int i = 0; i < alunni.size() ; i++) {
+            WidgetItem widgetItem = new WidgetItem();
+            widgetItem.setNomealunno(alunni.get(i).getNome_alunno()+"\n"+ ( new SimpleDateFormat( "dd-MM-yyyy' 'HH:mm:ss" ) ).format( Calendar.getInstance().getTime() ));
+            //widgetItem.setNomealunno(alunni.get(i).getNome_alunno());
+            caricaMedia(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
+            caricaUltimoVoto(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
+            caricaUtimaAssenza(widgetItem, alunni.get(i).getCod_alunno(), annosc, quadrimestre);
+            mWidgetItems.add(widgetItem);
+        }
     }
+
+    public void caricaMedia(WidgetItem widgetItem,String alunno, String annosc, String quadrimestre) {
+        Log.i(TAG_LOG, "arumets " + alunno + ", " + annosc + ", " + quadrimestre);
+
+        DBLayer dbLayer = null;
+
+        try {
+            dbLayer = new DBLayer(mContext);
+            dbLayer.open();
+            Cursor cursor = dbLayer.getMedia_totale(alunno, annosc, quadrimestre);
+            //             Cursor cursor = dbLayer.getAllVoti();
+            Log.i(TAG_LOG, "cursor: " + cursor.getCount());
+            if (cursor.getCount() > 0) {
+                cursor.moveToPosition(0);
+                do {
+                    valoremediatotale = Math.rint(cursor.getDouble(0) * Math.pow(10, 2)) / 100;
+                    widgetItem.setMedia(valoremediatotale);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException ex) {
+            Toast.makeText(mContext, "" + ex.toString(), Toast.LENGTH_SHORT).show();
+        }
+        dbLayer.close();
+
+        Log.i(TAG_LOG, "media_totale: " + valoremediatotale);
+        /*mediaTotale.setText("MEDIA TOTALE = " + valoremediatotale);
+
+        if (Float.parseFloat("" + valoremediatotale) < 6) {
+            mediaTotale.setTextColor(Color.RED);
+        } else if (Float.parseFloat("" + valoremediatotale) >= 6 && Float.parseFloat("" + valoremediatotale) < 7) {
+            mediaTotale.setTextColor(Color.rgb(255, 165, 0));
+        } else if (Float.parseFloat("" + valoremediatotale) >= 7 && Float.parseFloat("" + valoremediatotale) < 8) {
+            mediaTotale.setTextColor(Color.YELLOW);
+        } else if (Float.parseFloat("" + valoremediatotale) >= 8) {
+            mediaTotale.setTextColor(Color.GREEN);
+        }*/
+
+
+       // creaPie(pieChat_media_totale, valoremediatotale);
+
+    }
+
 
     public void caricaUltimoVoto(WidgetItem widgetItem, String alunno, String annosc, String quadrimestre) {
         Log.i(TAG_LOG, "arumets " + alunno + ", " + annosc + ", " + quadrimestre);
@@ -187,7 +253,9 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
             dbLayer.open();
             Cursor cursor = dbLayer.getUltimo_voto(alunno, annosc, quadrimestre);
             //             Cursor cursor = dbLayer.getAllVoti();
+
             Log.i(TAG_LOG, "cursor: " + cursor.getCount());
+
             if (cursor.getCount() > 0) {
                 cursor.moveToPosition(0);
                 do {
@@ -300,4 +368,51 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         }
 
     }
+    private void creaPie(PieChart pieChart, double voto) {
+
+        float voto_f = (float) voto;
+        ArrayList<Entry> Yvals = new ArrayList<>();
+        Yvals.add(new Entry(10 - voto_f, 0));
+        Yvals.add(new Entry(voto_f, 1));
+        PieDataSet dataset = new PieDataSet(Yvals, " ");
+        dataset.setDrawValues(false);
+
+        ArrayList year = new ArrayList<>();
+        year.add("");
+        year.add("media");
+        PieData data = new PieData(year, dataset);
+        data.setDrawValues(false);
+
+        pieChart.setData(data);
+        data.setValueTextSize(10);//Formatter(new PercentFormatter());
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.TRANSPARENT);
+        if (voto_f < 6) {
+            colors.add(Color.RED);
+            pieChart.setCenterTextColor(Color.RED);
+        } else if (voto_f >= 6 && voto_f < 7) {
+            colors.add(Color.rgb(255, 165, 0));
+            pieChart.setCenterTextColor(Color.rgb(255, 165, 0));
+        } else if (voto_f >= 7 && voto_f < 8) {
+            colors.add(Color.YELLOW);
+            pieChart.setCenterTextColor(Color.YELLOW);
+        } else if (voto_f >= 8) {
+            colors.add(Color.GREEN);
+            pieChart.setCenterTextColor(Color.GREEN);
+        }
+
+        dataset.setColors(colors);
+        pieChart.setData(data);
+        pieChart.setCenterText("" + voto_f);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+        pieChart.setDescription("");
+        pieChart.setRotationAngle(270f);
+        pieChart.setDrawSliceText(false);
+        pieChart.setPadding(0, 0, 0, 0);
+        pieChart.getLegend().setEnabled(false);
+        pieChart.setRotationEnabled(false);
+        pieChart.animateX(1500);
+
+    }
+
 }

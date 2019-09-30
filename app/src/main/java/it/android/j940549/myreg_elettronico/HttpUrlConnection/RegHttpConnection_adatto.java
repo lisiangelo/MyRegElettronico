@@ -100,31 +100,24 @@ public class RegHttpConnection_adatto {//extends SwingWorker<String, Integer> {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             trustManagers = new TrustManager[]{
                     new X509ExtendedTrustManager() {
-
                         @Override
                         public void checkClientTrusted(X509Certificate[] xcs, String string, Socket socket) throws CertificateException {
                         }
-
                         @Override
                         public void checkServerTrusted(X509Certificate[] xcs, String string, Socket socket) throws CertificateException {
                         }
-
                         @Override
                         public void checkClientTrusted(X509Certificate[] xcs, String string, SSLEngine ssle) throws CertificateException {
                         }
-
                         @Override
                         public void checkServerTrusted(X509Certificate[] xcs, String string, SSLEngine ssle) throws CertificateException {
                         }
-
                         @Override
                         public void checkClientTrusted(X509Certificate[] xcs, String string) throws CertificateException {
                         }
-
                         @Override
                         public void checkServerTrusted(X509Certificate[] xcs, String string) throws CertificateException {
                         }
-
                         @Override
                         public X509Certificate[] getAcceptedIssuers() {
                             return null;

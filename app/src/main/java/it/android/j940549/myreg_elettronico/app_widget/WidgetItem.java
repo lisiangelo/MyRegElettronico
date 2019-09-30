@@ -8,6 +8,7 @@ public class WidgetItem {
     private String dataAss;
     private String tipoAssenza;
     private String giustifica;
+    private double media;
 
     public WidgetItem() {
         nomealunno="";
@@ -16,7 +17,7 @@ public class WidgetItem {
         dataAss="";
         tipoAssenza="";
         giustifica="";
-
+        media=0;
     }
 
     public String getNomealunno() {
@@ -73,5 +74,13 @@ public class WidgetItem {
 
     public void setGiustifica(String giustifica) {
         this.giustifica = giustifica;
+    }
+
+    public double getMedia() {
+        return media;
+    }
+
+    public void setMedia(double media) {
+        this.media = media;
     }
 }

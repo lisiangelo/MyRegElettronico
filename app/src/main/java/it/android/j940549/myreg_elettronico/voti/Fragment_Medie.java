@@ -81,7 +81,7 @@ public class Fragment_Medie extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             this.alunno = (Alunno) getArguments().getSerializable("alunno");
-           this.annosc = getArguments().getString("annosc");
+            this.annosc = getArguments().getString("annosc");
             this.quadr= getArguments().getString("quadrimestre");
         }
 
@@ -205,7 +205,7 @@ public class Fragment_Medie extends Fragment {
         Log.i(TAG_LOG, "results... " + results.size());
 
 
-            }
+    }
 
 
 }

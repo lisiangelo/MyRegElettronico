@@ -111,7 +111,7 @@ public class Fragment_Elenco_Voti extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-      }
+    }
 
     @Override
     public void onDetach() {
@@ -173,8 +173,8 @@ public class Fragment_Elenco_Voti extends Fragment {
             }else {
                 Log.i(TAG_LOG, "results... " + results.size());
                 results.clear();
-    //            mAdapter = new MyRecyclerViewAdapter_ElencoVoti(results);
-      //          mRecyclerView.setAdapter(mAdapter);
+                //            mAdapter = new MyRecyclerViewAdapter_ElencoVoti(results);
+                //          mRecyclerView.setAdapter(mAdapter);
 
             }
         } catch (SQLException ex) {
@@ -183,7 +183,7 @@ public class Fragment_Elenco_Voti extends Fragment {
         dbLayer.close();
 
 
-            }
+    }
 
 
 
